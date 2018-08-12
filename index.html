@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/MunicipalBoundary_1.js"></script>
+        <script src="data/SettlementNominalDemandkW_10.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[29.42739182547537,80.4208382787641],[29.824993938472698,81.15400208393798]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var overlay_OpenStreetMap_0 = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            opacity: 1.0
+        });
+        overlay_OpenStreetMap_0.addTo(map);
+        map.addLayer(overlay_OpenStreetMap_0);
+        function pop_MunicipalBoundary_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Municip.</strong><br />' + (feature.properties['Municip.'] !== null ? Autolinker.link(String(feature.properties['Municip.'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MunicipalBoundary_1_0() {
+            return {
+                pane: 'pane_MunicipalBoundary_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_MunicipalBoundary_1');
+        map.getPane('pane_MunicipalBoundary_1').style.zIndex = 401;
+        map.getPane('pane_MunicipalBoundary_1').style['mix-blend-mode'] = 'normal';
+        var layer_MunicipalBoundary_1 = new L.geoJson(json_MunicipalBoundary_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_MunicipalBoundary_1',
+            onEachFeature: pop_MunicipalBoundary_1,
+            style: style_MunicipalBoundary_1_0,
+        });
+        bounds_group.addLayer(layer_MunicipalBoundary_1);
+        map.addLayer(layer_MunicipalBoundary_1);
+        var img_3Stone_2 = 'data/3Stone_2.png';
+        var img_bounds_3Stone_2 = [[29.4308976,80.4140631],[29.6505976,81.0047631]];
+        var overlay_3Stone_2 = new L.imageOverlay(img_3Stone_2, img_bounds_3Stone_2);
+        bounds_group.addLayer(overlay_3Stone_2);
+        var img_Biomass_3 = 'data/Biomass_3.png';
+        var img_bounds_Biomass_3 = [[29.4309531,80.4444256],[29.6392531,80.9927256]];
+        var overlay_Biomass_3 = new L.imageOverlay(img_Biomass_3, img_bounds_Biomass_3);
+        bounds_group.addLayer(overlay_Biomass_3);
+        var img_ICS_4 = 'data/ICS_4.png';
+        var img_bounds_ICS_4 = [[29.431363899999997,80.4447926],[29.6031639,80.9936926]];
+        var overlay_ICS_4 = new L.imageOverlay(img_ICS_4, img_bounds_ICS_4);
+        bounds_group.addLayer(overlay_ICS_4);
+        var img_LPG_5 = 'data/LPG_5.png';
+        var img_bounds_LPG_5 = [[29.432053800000002,80.48013920000001],[29.6507538,81.00063920000001]];
+        var overlay_LPG_5 = new L.imageOverlay(img_LPG_5, img_bounds_LPG_5);
+        bounds_group.addLayer(overlay_LPG_5);
+        var img_PicoPV_6 = 'data/PicoPV_6.png';
+        var img_bounds_PicoPV_6 = [[29.4495513,80.4809017],[29.6486513,80.9937017]];
+        var overlay_PicoPV_6 = new L.imageOverlay(img_PicoPV_6, img_bounds_PicoPV_6);
+        bounds_group.addLayer(overlay_PicoPV_6);
+        var img_SHS_7 = 'data/SHS_7.png';
+        var img_bounds_SHS_7 = [[29.4308976,80.45056890000001],[29.6505976,80.9937689]];
+        var overlay_SHS_7 = new L.imageOverlay(img_SHS_7, img_bounds_SHS_7);
+        bounds_group.addLayer(overlay_SHS_7);
+        var img_Minigrid_8 = 'data/Minigrid_8.png';
+        var img_bounds_Minigrid_8 = [[29.4532495,80.73141148923727],[29.5790495,81.00481148923727]];
+        var overlay_Minigrid_8 = new L.imageOverlay(img_Minigrid_8, img_bounds_Minigrid_8);
+        bounds_group.addLayer(overlay_Minigrid_8);
+        var img_NationalGrid_9 = 'data/NationalGrid_9.png';
+        var img_bounds_NationalGrid_9 = [[29.554053800000002,80.4140631],[29.6507538,80.5393631]];
+        var overlay_NationalGrid_9 = new L.imageOverlay(img_NationalGrid_9, img_bounds_NationalGrid_9);
+        bounds_group.addLayer(overlay_NationalGrid_9);
+        function pop_SettlementNominalDemandkW_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">ClusterID</th>\
+                        <td>' + (feature.properties['ClusterID'] !== null ? Autolinker.link(String(feature.properties['ClusterID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Num. HH</strong><br />' + (feature.properties['Num. HH'] !== null ? Autolinker.link(String(feature.properties['Num. HH'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Min. Nominal Load [kWp]</strong><br />' + (feature.properties['Min. Nominal Load [kWp]'] !== null ? Autolinker.link(String(feature.properties['Min. Nominal Load [kWp]'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Min. Morning Demand [kWh]</strong><br />' + (feature.properties['Min. Morning Demand [kWh]'] !== null ? Autolinker.link(String(feature.properties['Min. Morning Demand [kWh]'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Min. Afternoon Demand [kWh]</strong><br />' + (feature.properties['Min. Afternoon Demand [kWh]'] !== null ? Autolinker.link(String(feature.properties['Min. Afternoon Demand [kWh]'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Min. Evening Demand [kWh]</strong><br />' + (feature.properties['Min. Evening Demand [kWh]'] !== null ? Autolinker.link(String(feature.properties['Min. Evening Demand [kWh]'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Min. Total Daily Demand [kWh]</strong><br />' + (feature.properties['Min. Total Daily Demand [kWh]'] !== null ? Autolinker.link(String(feature.properties['Min. Total Daily Demand [kWh]'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SettlementNominalDemandkW_10_0(feature) {
+            if (feature.properties['Min. Nominal Load [kWp]'] >= 0.200000 && feature.properties['Min. Nominal Load [kWp]'] <= 2.440000 ) {
+                return {
+                pane: 'pane_SettlementNominalDemandkW_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,240,217,1.0)',
+            }
+            }
+            if (feature.properties['Min. Nominal Load [kWp]'] >= 2.440000 && feature.properties['Min. Nominal Load [kWp]'] <= 4.680000 ) {
+                return {
+                pane: 'pane_SettlementNominalDemandkW_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,204,138,1.0)',
+            }
+            }
+            if (feature.properties['Min. Nominal Load [kWp]'] >= 4.680000 && feature.properties['Min. Nominal Load [kWp]'] <= 6.920000 ) {
+                return {
+                pane: 'pane_SettlementNominalDemandkW_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,141,89,1.0)',
+            }
+            }
+            if (feature.properties['Min. Nominal Load [kWp]'] >= 6.920000 && feature.properties['Min. Nominal Load [kWp]'] <= 9.160000 ) {
+                return {
+                pane: 'pane_SettlementNominalDemandkW_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,74,51,1.0)',
+            }
+            }
+            if (feature.properties['Min. Nominal Load [kWp]'] >= 9.160000 && feature.properties['Min. Nominal Load [kWp]'] <= 11.400000 ) {
+                return {
+                pane: 'pane_SettlementNominalDemandkW_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,0,0,1.0)',
+            }
+            }
+        }
+        map.createPane('pane_SettlementNominalDemandkW_10');
+        map.getPane('pane_SettlementNominalDemandkW_10').style.zIndex = 410;
+        map.getPane('pane_SettlementNominalDemandkW_10').style['mix-blend-mode'] = 'normal';
+        var layer_SettlementNominalDemandkW_10 = new L.geoJson(json_SettlementNominalDemandkW_10, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_SettlementNominalDemandkW_10',
+            onEachFeature: pop_SettlementNominalDemandkW_10,
+            style: style_SettlementNominalDemandkW_10_0,
+        });
+        bounds_group.addLayer(layer_SettlementNominalDemandkW_10);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Settlement Nominal Demand (kW)<br /><table><tr><td style="text-align: center;"><img src="legend/SettlementNominalDemandkW_10_020.png" /></td><td> 0 - 2 </td></tr><tr><td style="text-align: center;"><img src="legend/SettlementNominalDemandkW_10_251.png" /></td><td> 2 - 5 </td></tr><tr><td style="text-align: center;"><img src="legend/SettlementNominalDemandkW_10_572.png" /></td><td> 5 - 7 </td></tr><tr><td style="text-align: center;"><img src="legend/SettlementNominalDemandkW_10_793.png" /></td><td> 7 - 9 </td></tr><tr><td style="text-align: center;"><img src="legend/SettlementNominalDemandkW_10_9114.png" /></td><td> 9 - 11 </td></tr></table>': layer_SettlementNominalDemandkW_10,"National Grid": overlay_NationalGrid_9,"Minigrid": overlay_Minigrid_8,"SHS": overlay_SHS_7,"Pico PV": overlay_PicoPV_6,"LPG": overlay_LPG_5,"ICS": overlay_ICS_4,"Biomass": overlay_Biomass_3,"3-Stone": overlay_3Stone_2,'<img src="legend/MunicipalBoundary_1.png" /> Municipal Boundary': layer_MunicipalBoundary_1,"OpenStreetMap": overlay_OpenStreetMap_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
