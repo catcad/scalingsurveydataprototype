@@ -36,11 +36,6 @@
         <script src="data/CookingAccess_2.js"></script>
         <script src="data/ElectricityAccess_3.js"></script>
         <script>
-        var highlightLayer;
-        function highlightFeature(e) {
-            highlightLayer = e.target;
-            highlightLayer.openPopup();
-        }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         })
@@ -65,18 +60,6 @@
         overlay_OpenStreetMap_0.addTo(map);
         map.addLayer(overlay_OpenStreetMap_0);
         function pop_Municipality_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>DISTRICT</strong><br />' + (feature.properties['DISTRICT'] !== null ? Autolinker.link(String(feature.properties['DISTRICT'])) : '') + '</td>\
@@ -112,18 +95,6 @@
         bounds_group.addLayer(layer_Municipality_1);
         map.addLayer(layer_Municipality_1);
         function pop_CookingAccess_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>ClusterID</strong><br />' + (feature.properties['ClusterID'] !== null ? Autolinker.link(String(feature.properties['ClusterID'])) : '') + '</td>\
@@ -190,18 +161,6 @@
         bounds_group.addLayer(layer_CookingAccess_2);
         map.addLayer(layer_CookingAccess_2);
         function pop_ElectricityAccess_3(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>ClusterID</strong><br />' + (feature.properties['ClusterID'] !== null ? Autolinker.link(String(feature.properties['ClusterID'])) : '') + '</td>\
