@@ -144,6 +144,12 @@
                     <tr>\
                         <td colspan="2"><strong>Avg. Household Future/Supressed Demand (Wp)</strong><br />' + (feature.properties['Avg. Household Future/Supressed Demand (Wp)'] !== null ? Autolinker.link(String(feature.properties['Avg. Household Future/Supressed Demand (Wp)'])) : '') + '</td>\
                     </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Total Basic Household Demand (kWp)</strong><br />' + (feature.properties['Total Basic Household Demand (kWp)'] !== null ? Autolinker.link(String(feature.properties['Total Basic Household Demand (kWp)'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Total Future/Supressed Household Demand (kWp)</strong><br />' + (feature.properties['Total Future/Supressed Household Demand (kWp)'] !== null ? Autolinker.link(String(feature.properties['Total Future/Supressed Household Demand (kWp)'])) : '') + '</td>\
+                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
