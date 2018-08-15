@@ -9,6 +9,11 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+				<link rel="stylesheet" href="css/sidebar.css">
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.0.2/css/leaflet-sidebar.min.css" integrity="sha384-EPNnjUWfl6+wmqeqVBLV1haeIrms6PXl67DNZ/RVCsfkwT78QX2fe16Gxidc6UOF" crossorigin="" />
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" integrity="sha384-X7L1bhgb36bF1iFvaqvhgpaGpayKM+vXNNYRlF89BFA5s3vi1qZ8EX9086RlZjy1" crossorigin="" />
+
+				
         <style>
         html, body, #map {
             width: 100%;
@@ -20,6 +25,79 @@
         <title></title>
     </head>
     <body>
+		
+		<div id="sidebar" class="leaflet-sidebar">
+        <div class="leaflet-sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href=#data-sources role="tab"><i class="fa fa-link"></i></a></li>
+                <li><a href="#settings" role="tab"><i class="fa fa-filter"></i></a></li>
+                <li><a href="#download" role="tab"><i class="fa fa-arrow-circle-down"></i></a></li>
+
+            </ul>
+            <ul role="tablist">
+                <li><a href="#about" role="tab"><i class="fa fa-question-circle"></i></a></li>
+            </ul>
+        </div>
+        <div class="leaflet-sidebar-content">
+            <div class="leaflet-sidebar-pane active" id="home">
+                <h1 class="leaflet-sidebar-header">
+                     Prototype energy demand mapping
+                    <div class="leaflet-sidebar-close"><i class="fa fa-times"></i></div>
+                </h1>
+                <p>The momentum behind SDG7 and Sustainable Energy for All (SE4ALL) underlines a global consensus that universal access to modern energy services is central to the sustainable development agenda and strongly cross-cutting with other sustainable development objectives and goals. New decentralized approaches for electrification (SHS and mini-grids) and improved cooking technologies open new opportunities for accelerated energy access, but also increase complexity of rural energy access planning and implementation. </p>
+								<p>Geospatial analysis has proven itself a crucial tool for planning, however, lack of high quality input data impedes application of modern spatial planning tools. Nepal is currently on its transition to a lower-middle income country and puts strong efforts on improved energy access. This means strengthening the existing grid, improving last-mile electrification of remote areas and providing modern cooking services for all – challenges which many other countries also face, requiring solutions that can not only be applied in Nepal but widely replicated. </p>
+								<p>For the end-user, in this case governmental agencies responsible for planning energy access improvements in Nepal, the non-existence of data at local level is particularly challenging. The new Nepali Constitution  states that there will be three levels of government i.e. i) Federal, ii) Provincial, and iii) Local Level; that can prepare budgets and implement policies and plans. </p>
+								<p>As a result, Local and Provincial governments must now take the lead and make evidence-based decisions towards shaping their energy future. Currently, the capacities on these levels are still being developed, and the data necessary for making planning decisions severely lacking. Our project tackles the problem of cost-effective data collection, extrapolation, harmonization, sharing, and use for planning and project implementation for all governmental and non-governmental stakeholders working on energy access in Nepal. </p>
+				
+                
+                <p class="license"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+            </div>
+
+            <div class="leaflet-sidebar-pane" id="data-sources">
+                <h1 class="leaflet-sidebar-header">Data sources<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <p><h3>Access input data</h3>
+				The data for the analysis was downloaded form the following sources:
+				High Resolution Settlement Layer: <a href="https://ciesin.columbia.edu/data/hrsl/#data" target="_blank">CIESIN</a>.<br>
+                Region, District, Ward and Village shapefiles: <a href="http://portal-nbs-tz.opendata.arcgis.com/datasets/" target="_blank">NBS GIS Open Data Portal</a>.<br>
+                Global Horizontal Irradiance raster dataset: <a href="http://globalsolaratlas.info/downloads/tanzania" target="_blank">Global Solar Atlas</a>.<br>
+                Number of healthsites and water sources dataset: <a href="http://portal-nbs-tz.opendata.arcgis.com/datasets/" target="_blank">NBS GIS Open Data Portal</a>.<br>
+                The processing steps for preparing the data for the prioritization are described with details and examples in <a href="methodology_prioritization.html" target="_blank">this section</a>.</p>
+				<p><h3>Methodology for data preparation</h3> 
+                An overview of the web-map development is provided <a href="methodology_webmap.html" target="_blank">here</a>.</p>
+                
+
+            </div>
+            <div class="leaflet-sidebar-pane" id="settings">
+                <h1 class="leaflet-sidebar-header">Layers<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                 <p><h3>Turn on and off layers</h3> On the right side the different information layer on current status of energy supply and type of cooking energy can be selected<br>
+                
+				
+								<p><h3>Pop-ups</h3> By clicking on the settlement cluster detailed information on projected energy demand is provided.
+                <br>
+            </div>
+            <div class="leaflet-sidebar-pane" id="about">
+                <h1 class="leaflet-sidebar-header">
+                     About the map
+                    <div class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></div>
+                </h1>
+               <p>Source code for the webmap can be found <a href="https://github.com/catcad/maptz" target="_blank">here</a>.</p>
+                <p class="license"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+            </div>
+            <div class="leaflet-sidebar-pane" id="download">
+                <h1 class="leaflet-sidebar-header">
+                        Download
+                        <div class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></div>
+                    </h1>
+                <p>The data visualized in this tool can be <a href="https://energydata.info/dataset/-tanzania---prioritization-of-locations-for-off-grid-rural-electrification--2018-" target="_blank">downloaded from ENERGYDATA.INFO</a>. This will allow complete exploration, and filtering villages and results much more freely. Available formats are GeoJSON, Shapefile or CSV. </p>
+                <p>To access the detailed data with the houses, buildings and roads individually mapped, please visit <a href="https://www.openstreetmap.org/search?query=tanzania#map=6/-6.402/34.993" target="_blank">OpenStreetMap</a> and find the area of interest.</p>
+				<p>To download the OpenStreetMap data to use in software such as <a href="https://www.qgis.org" target="_blank">QGIS</a>, please use the <a href="https://export.hotosm.org/en/v3/" target="_blank">HOT Export Tool</a> where you can select the area of interest and the required data for download.</p>
+                <p class="license"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+            </div>
+        </div>
+</div>
+		
+		
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -35,11 +113,22 @@
         <script src="data/Municipality_1.js"></script>
         <script src="data/CookingAccess_2.js"></script>
         <script src="data/ElectricityAccess_3.js"></script>
-        <script>
-        var map = L.map('map', {
+				<script src="https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.0.2/js/leaflet-sidebar.min.js" integrity="sha384-LzTQ6yhqVy/ipjMq5MMk98mo0E64Wtu9K1Jm5OeKPolnqrlv3FMdc457RoOANGMb" crossorigin=""></script>
+        	
+				<script>
+				
+				var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         })
-        var hash = new L.Hash(map);
+        
+				let sidebar = L.control.sidebar({
+            container: "sidebar",
+            closeButton: true,
+            position: "left"
+        }).addTo(map);
+				
+				
+				var hash = new L.Hash(map);
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         var measureControl = new L.Control.Measure({
             primaryLengthUnit: 'meters',
@@ -54,6 +143,7 @@
                 map.fitBounds(bounds_group.getBounds());
             }
         }
+						
         var overlay_OpenStreetMap_0 = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             opacity: 1.0
         });
@@ -244,6 +334,9 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'Electricity Access<br /><table><tr><td style="text-align: center;"><img src="legend/ElectricityAccess_3_OffGridSolar0.png" /></td><td>Off-Grid Solar</td></tr><tr><td style="text-align: center;"><img src="legend/ElectricityAccess_3_MiniGrid1.png" /></td><td>Mini-Grid</td></tr><tr><td style="text-align: center;"><img src="legend/ElectricityAccess_3_Grid2.png" /></td><td>Grid</td></tr></table>': layer_ElectricityAccess_3,'Cooking Access<br /><table><tr><td style="text-align: center;"><img src="legend/CookingAccess_2_Unimproved0.png" /></td><td>Unimproved</td></tr><tr><td style="text-align: center;"><img src="legend/CookingAccess_2_ICS1.png" /></td><td>ICS</td></tr><tr><td style="text-align: center;"><img src="legend/CookingAccess_2_BLENs2.png" /></td><td>BLENs</td></tr></table>': layer_CookingAccess_2,'<img src="legend/Municipality_1.png" /> Municipality': layer_Municipality_1,"OpenStreetMap": overlay_OpenStreetMap_0,},{collapsed:false}).addTo(map);
         setBounds();
-        </script>
+        
+				
+				
+				</script>
     </body>
 </html>
