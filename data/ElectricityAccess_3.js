@@ -1,6 +1,6 @@
-var json_ElectricityAccess_2 = {
+var json_ElectricityAccess_3 = {
 "type": "FeatureCollection",
-"name": "ElectricityAccess_2",
+"name": "ElectricityAccess_3",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "ClusterID": "1001", "Households": "135", "Electricity Access": "Mini-Grid", "Typical Cooking Stove": "Unimproved", "Avg. Household Basic Demand (Wp)": "61", "Avg. Household Future\/Supressed Demand (Wp)": "511", "Total Basic Household Demand (kWp)": "8", "Total Future\/Supressed Household Demand (kWp)": "69" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 87.030286899999979, 26.995893899999988 ], [ 87.030218300000016, 26.9958978 ], [ 87.028822, 26.997167199999978 ], [ 87.028737, 26.997299900000012 ], [ 87.043409899999972, 27.0088158 ], [ 87.04346, 27.008851699999983 ], [ 87.0435466, 27.0088932 ], [ 87.0437331, 27.0089138 ], [ 87.043781800000033, 27.008911899999987 ], [ 87.043848400000016, 27.0089044 ], [ 87.043917900000011, 27.0088938 ], [ 87.048335299999977, 27.007251899999989 ], [ 87.048377599999981, 27.0071862 ], [ 87.047880599999985, 26.9994645 ], [ 87.0478485, 26.999263100000011 ], [ 87.047772100000017, 26.999186699999985 ], [ 87.030286899999979, 26.995893899999988 ] ] ] ] } },
